@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Novice Users</h1>
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>username</th>
+      <th>email</th>
+      <th>status</th>
+<!--       <th>Actions</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @novice_users.each do |novice| %>
+      <tr>
+        <td><%= novice.username %></td>
+        <td><%= novice.email %></td>
+        <td><%= novice.status %></td>
+        <td><%#= link_to 'Show', novice %></td>
+        <td><%= link_to 'Edit status', edit_status_novice_path(:id => novice.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+

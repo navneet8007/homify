@@ -1,0 +1,18 @@
+<%= form_for @novice, :url => update_status_path, method: "put" do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :status %><br /> 
+    <%= f.select :status, options_for_select([['qualified', "qualified"], ['not qualified', "not qualified"], ['banned', "banned"]]) , {:prompt => "--select status--"}%>
+  </div>
+    <div class="field">
+      <%= f.hidden_field :id,:value=>params[:id], id: :novice_id%>
+
+    </div>
+ 
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+

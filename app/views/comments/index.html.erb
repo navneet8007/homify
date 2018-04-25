@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comments</h1>
+
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th>type</th>
+<!--       <th>Todo</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.title %></td>
+        <td><%= comment.user.username %></td>
+        <td><%= comment.parent_type %></td>
+        <td><%#= comment.todo %></td>
+        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+<% if params[:campaign_id].present? %>
+  <%= link_to 'New Comment', new_comment_path(:campaign_id=>params[:campaign_id]) %>
+<% elsif params[:todo_id].present? %>
+   <%= link_to 'New Comment', new_comment_path(:todo_id=>params[:todo_id]) %>
+<%end%>

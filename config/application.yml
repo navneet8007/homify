@@ -1,0 +1,3 @@
+# DB_USERNAME: 'pguser'
+# DB_PASSWORD: 'pguser'
+# DATABASE_URL: "postgresql:///homify_system"

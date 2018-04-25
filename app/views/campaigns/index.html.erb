@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Campaigns</h1>
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Tags</th>
+      <th>Estimated duration</th>
+      <th>User</th>
+      <th>Todos</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @campaigns.each do |campaign| %>
+      <tr>
+        <td><%= campaign.title %></td>
+        <td><%= campaign.tags %></td>
+        <td><%= campaign.estimated_duration %></td>
+        <td><%= campaign.user.username %></td>
+        <td><%= link_to 'Show todos',todos_path(:campaign_id=>campaign.id)  %></td>
+        <td><%= link_to 'Show comments',comments_path(:campaign_id=>campaign.id)  %></td>
+        <td><%= link_to 'Show', campaign %></td>
+        <td><%= link_to 'Edit', edit_campaign_path(campaign) if (expert_signed_in? && current_user == campaign.user) %></td>
+        <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } if (expert_signed_in? && current_user == campaign.user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+<% if expert_signed_in? %>
+<%= link_to 'New Campaign', new_campaign_path %>
+<%end%>
